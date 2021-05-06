@@ -1,7 +1,29 @@
 .template-div {
    margin-left: 20rem;
    margin-top: 10vh;
-   width: 80vw;
-   height: 90vh;
+   width: 60vw;
+   height: 70vh;
    overflow-y: hidden;
+}
+
+h1 {
+   font-size: 2rem;
+}
+
+.like-icon {
+   cursor: pointer;
+}
+
+.data-div {
+   margin-left: 20vw;
+   padding-top: 2rem;
+}
+
+.add-to-playlist {
+   padding: 0.7rem 0.5rem;
+   background-color: var(--primary-color);
+   color: white;
+   border: none;
+   border-radius: 4px;
+   margin-left: 1rem;
 }

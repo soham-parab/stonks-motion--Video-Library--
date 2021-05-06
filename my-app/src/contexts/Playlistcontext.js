@@ -53,10 +53,32 @@ const playlistReducer = (acc, action) => {
             }),
          };
 
-      case "REMOVE FROM PLAYLIST":
+      case "REMOVE PLAYLIST":
          return {
             ...acc,
             playlist: acc.playlist.filter((item) => item !== action.payload),
+         };
+
+      case "REMOVE FROM PLAYLIST":
+         return {
+            // ...acc,playlist:acc.playlist.map((item) => {
+            //    return item.id.filter((item)=>{
+            //       return item.id === action.payload.id ?
+            //       {...item, }
+            //    })
+
+            // })
+            ...acc,
+            playlist: acc.playlist.map((item) => {
+               return item.id === action.payload
+                  ? {
+                       ...item,
+                       videos: item.videos.filter((vid) => {
+                          return vid !== action.videos;
+                       }),
+                    }
+                  : item;
+            }),
          };
       default:
          break;

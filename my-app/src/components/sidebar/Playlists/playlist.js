@@ -21,14 +21,14 @@ export function Playlist() {
          {playlistState.playlist.map((playlist) => {
             return (
                <div className="alert alert-primary">
-                  <Link to={`/playlistlisting/${playlist.id}`}>
+                  <Link className="link" to={`/playlistlisting/${playlist.id}`}>
                      <h2 className="playlist-btn">{playlist.name}</h2>
                   </Link>
 
                   <div
                      onClick={() =>
                         playlistDispatch({
-                           type: "REMOVE FROM PLAYLIST",
+                           type: "REMOVE PLAYLIST",
                            payload: playlist,
                         })
                      }

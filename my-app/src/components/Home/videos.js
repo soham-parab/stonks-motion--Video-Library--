@@ -77,16 +77,13 @@ export function Videos() {
                      </button>
 
                      <button
+                        className="add-to-playlist"
                         onClick={() => {
                            setBigModal({ display: "flex" });
                            setVideo(videoObj);
                         }}
                      >
                         Add to playlist
-                     </button>
-
-                     <button onClick={() => setModal({ display: "flex" })}>
-                        ...
                      </button>
                   </div>
                );
@@ -116,15 +113,7 @@ export function Videos() {
                            </div>
                            <div class="modal-footer">
                               <button
-                                 onClick={() => setModal({ display: "none" })}
-                                 type="button"
-                                 class="btn btn-secondary"
-                                 data-bs-dismiss="modal"
-                              >
-                                 Close
-                              </button>
-
-                              <button
+                                 className="save-changes"
                                  onClick={() =>
                                     playlistDispatch({
                                        type: "CREATE PLAYLIST",
@@ -163,45 +152,6 @@ export function Videos() {
                   </div>
                </div>
             </div>
-            {/* 
-            <div style={modal} class="modal" tabindex="-1">
-               <div class="modal-dialog">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title">Enter Playlist Name</h5>
-                     </div>
-                     <div class="modal-body">
-                        <input
-                           type="text"
-                           onChange={(e) => setNewPlaylist(e.target.value)}
-                        />
-                     </div>
-                     <div class="modal-footer">
-                        <button
-                           onClick={() => setModal({ display: "none" })}
-                           type="button"
-                           class="btn btn-secondary"
-                           data-bs-dismiss="modal"
-                        >
-                           Close
-                        </button>
-
-                        <button
-                           onClick={() =>
-                              playlistDispatch({
-                                 type: "CREATE PLAYLIST",
-                                 payload: { [newPlaylist]: [] },
-                              })
-                           }
-                           type="button"
-                           class="btn btn-primary"
-                        >
-                           Save changes
-                        </button>
-                     </div>
-                  </div>
-               </div>
-            </div> */}
          </div>
       </div>
    );
