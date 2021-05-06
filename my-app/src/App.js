@@ -17,29 +17,23 @@ import { useVideos } from "./contexts/Librarycontext";
 import { LikedVideos } from "./components/sidebar/likedvideos/likedvideos";
 import { WatchLater } from "./components/sidebar/Watch Later/watchlater";
 import { Nav } from "./components/Nav/nav";
-import {Sidebar} from "./components/sidebar/sidebar"
+import { Sidebar } from "./components/sidebar/sidebar";
+import { ListPlaylists } from "../src/components/Home/listplaylists";
 function App() {
    return (
       <div className="App">
-         
-
          <Router>
             <Nav />
-            <Sidebar/>
+            <Sidebar />
             <Routes>
                <Route path="/" element={<Videos />} />
-               <Route path="/myplaylist" element={<Playlist />} />
+               <Route path="/playlists" element={<Playlist />} />
                <Route path="/videotemplate/:id" element={<VideoTemplate />} />
                <Route path="/likedvideos" element={<LikedVideos />} />
                <Route path="/watchlater" element={<WatchLater />} />
+               <Route path="/playlistlisting/:id" element={<ListPlaylists />} />
             </Routes>
          </Router>
-
-
-       
-
-            
-       
       </div>
    );
 }

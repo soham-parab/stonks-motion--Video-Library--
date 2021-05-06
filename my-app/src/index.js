@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { VideosProvider } from './contexts/Librarycontext';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { VideosProvider } from "./contexts/Librarycontext";
+import { PlaylistProvider } from "./contexts/Playlistcontext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <VideosProvider>
-    <App />
-    </VideosProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+   <React.StrictMode>
+      <VideosProvider>
+         <PlaylistProvider>
+            <App />
+         </PlaylistProvider>
+      </VideosProvider>
+   </React.StrictMode>,
+   document.getElementById("root")
 );
-

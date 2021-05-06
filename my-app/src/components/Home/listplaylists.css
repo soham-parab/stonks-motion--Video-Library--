@@ -1,0 +1,10 @@
+.playlist-videos-div {
+   margin: 10rem;
+   height: 100vh;
+   width: 100vw;
+   background-color: black;
+}
+
+h1 {
+   font-size: 50rem;
+}

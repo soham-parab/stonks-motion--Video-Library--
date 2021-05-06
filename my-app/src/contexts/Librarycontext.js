@@ -44,6 +44,5 @@ const reducerFunction = (acc, action) => {
             ),
          };
       default:
-         console.log("asdsa");
    }
 };
