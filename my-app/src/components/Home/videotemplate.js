@@ -1,18 +1,18 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./videotemplate.css";
 import { useState } from "react";
 import { useVideos } from "../../contexts/Librarycontext";
 import { data } from "../../librarydata/librarydata";
 import { usePlaylist } from "../../contexts/Playlistcontext";
-import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 
 export const VideoTemplate = () => {
-   const [modal, setModal] = useState({ display: "none" });
+   // const [modal, setModal] = useState({ display: "none" });
    const [bigModal, setBigModal] = useState({ display: "none" });
    const [newPlaylist, setNewPlaylist] = useState("");
    const [video, setVideo] = useState({});
    const { playlistState, playlistDispatch } = usePlaylist();
-   const { state, dispatch } = useVideos();
+   const { dispatch } = useVideos();
    const { id } = useParams();
    console.log(id);
    const videoArr = data.filter((item) => item.video === id);
@@ -92,7 +92,6 @@ export const VideoTemplate = () => {
                   {playlistState.playlist.map((playlist) => {
                      return (
                         <div className="alert-primaryy">
-                           {/* <h2>{Object.keys(playlist)}</h2> */}
                            <h2>{playlist.name}</h2>
                            <button
                               onClick={() =>

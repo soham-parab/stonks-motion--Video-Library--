@@ -1,19 +1,9 @@
 import { usePlaylist } from "../../../contexts/Playlistcontext";
 import "./playlist.css";
-import {
-   BrowserRouter as Router,
-   Link,
-   Routes,
-   Route,
-   Navigate,
-   useNavigate,
-   useParams,
-   useLocation,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 export function Playlist() {
    const { playlistState, playlistDispatch } = usePlaylist();
-   //    console.log(Object.values(playlistState.playlist));
-   //    return null;
+
    console.log(Object.keys(playlistState.playlist));
    return (
       <div className="playlist-div">

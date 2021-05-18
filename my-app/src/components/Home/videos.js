@@ -5,16 +5,7 @@ import { useState } from "react";
 import "./videos.css";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { usePlaylist } from "../../contexts/Playlistcontext";
-import {
-   BrowserRouter as Router,
-   Link,
-   Routes,
-   Route,
-   Navigate,
-   useNavigate,
-   useParams,
-   useLocation,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useVideos } from "../../contexts/Librarycontext";
 import { AddToPlaylist } from "../addnewplaylist/addnewplaylist";
@@ -30,7 +21,6 @@ export function Videos() {
    return (
       <div className="videos-main-div">
          <div className="parent-data">
-            {/* {bigModal && <AddToPlaylist />} */}
             {data.map((videoObj) => {
                return (
                   <div className="card-parent-div">
@@ -38,7 +28,6 @@ export function Videos() {
                         className="video-links"
                         to={`/videotemplate/${videoObj.video}`}
                      >
-                        {" "}
                         <div className="video-cardbody">
                            <div className="videoImgDiv">
                               <img
@@ -47,10 +36,9 @@ export function Videos() {
                               />
                            </div>
                            <h3 className="video-title"> {videoObj.title}</h3>
-                           {/* <p className="vidDescrip">{videoObj.description}</p>
-                            */}
+
                            <small>{videoObj.subcategory.type}</small>
-                        </div>{" "}
+                        </div>
                      </Link>
 
                      <button
@@ -133,7 +121,6 @@ export function Videos() {
                      {playlistState.playlist.map((playlist) => {
                         return (
                            <div className="alert-primaryy">
-                              {/* <h2>{Object.keys(playlist)}</h2> */}
                               <h2>{playlist.name}</h2>
                               <button
                                  onClick={() =>

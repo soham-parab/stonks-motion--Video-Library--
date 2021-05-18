@@ -20,7 +20,6 @@
    padding-top: 0.5rem;
    padding: 0.7rem;
    border-radius: 4px;
-   /* overflow-y: hidden; */
 }
 
 .para:hover {
@@ -45,7 +44,6 @@
 }
 
 .link-nav {
-   /* padding: 2rem; */
    padding: 0.7rem;
    padding-top: 0.5rem;
    margin: 1rem;
@@ -59,8 +57,6 @@
    margin-right: 1rem;
    display: flex;
    align-items: center;
-
-   /* padding-right: 0.5rem; */
 }
 
 .link-nav:hover {

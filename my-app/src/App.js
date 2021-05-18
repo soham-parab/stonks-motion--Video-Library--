@@ -1,14 +1,5 @@
 import "./App.css";
-import {
-   BrowserRouter as Router,
-   Link,
-   Routes,
-   Route,
-   Navigate,
-   useNavigate,
-   useParams,
-   useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Videos } from "./components/Home/videos";
 import { Playlist } from "./components/sidebar/Playlists/playlist";
 import { Playvideo } from "./components/playvideo";

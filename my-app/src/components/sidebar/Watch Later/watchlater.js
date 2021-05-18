@@ -2,17 +2,8 @@ import { React } from "react";
 import { useVideos } from "../../../contexts/Librarycontext";
 
 import "./watchlater.css";
-import { FaThumbsUp, FaRegClock } from "react-icons/fa";
-import {
-   BrowserRouter as Router,
-   Link,
-   Routes,
-   Route,
-   Navigate,
-   useNavigate,
-   useParams,
-   useLocation,
-} from "react-router-dom";
+import { FaThumbsUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 export function WatchLater() {
    const { state, dispatch } = useVideos();
 
@@ -32,8 +23,7 @@ export function WatchLater() {
                               />
                            </div>
                            <h3 className="video-title"> {vid.title}</h3>
-                           {/* <p className="vidDescrip">{videoObj.description}</p>
-                            */}
+
                            <p>{vid.subcategory.type}</p>
                         </div>{" "}
                      </Link>

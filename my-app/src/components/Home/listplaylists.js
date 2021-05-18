@@ -2,15 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import "./listplaylists.css";
 import { useVideos } from "../../contexts/Librarycontext";
 import { usePlaylist } from "../../contexts/Playlistcontext";
-import {
-   BrowserRouter as Router,
-   Link,
-   Routes,
-   Route,
-   Navigate,
-   useNavigate,
-   useLocation,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 export const ListPlaylists = () => {
    const { state, dispatch } = useVideos();
    const { playlistState, playlistDispatch } = usePlaylist();
@@ -40,10 +32,9 @@ export const ListPlaylists = () => {
                                  />
                               </div>
                               <h3 className="video-titlee"> {vid.title}</h3>
-                              {/* <p className="vidDescrip">{videoObj.description}</p>
-                               */}
+
                               <small>{vid.subcategory.type}</small>
-                           </div>{" "}
+                           </div>
                         </Link>
                         <button
                            className="remove-button"

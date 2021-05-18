@@ -14,54 +14,20 @@
 .card-parent-div {
    height: 20rem;
    overflow-y: hidden;
-   /* margin: 1rem; */
+
    width: 20rem;
    margin: 1rem;
-   /* display: flex; */
-   /* align-items: center; */
-   /* flex-direction: column; */
 }
-/*
- .video-cardbody {
-    display: flex;
-    flex-wrap: wrap;
- }
- */
+
 .videoImgDiv {
    height: 50%;
    width: 20rem;
-   /* padding: 1rem; */
-
-   /* overflow-y: hidden; */
 }
 
 .videoImgDiv img {
    height: 100%;
    width: 100%;
 }
-
-/*
- .HorizImgDiv img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
- }
- 
- .videoTitle {
-    padding: 0.1rem 0;
-    font-size: 1.2rem;
-    color: #282c3f;
- }
- 
- .HorizImgDiv {
-    overflow-y: hidden;
- }
- 
- .videos-main-div {
-    margin-top: 10vh;
- 
-    padding: 2rem;
- } */
 
 .like-button {
    border: none;
@@ -73,5 +39,4 @@
 
 .like-icon {
    font-size: 1.5rem;
-   /* padding: 1rem; */
 }

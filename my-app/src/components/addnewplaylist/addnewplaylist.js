@@ -1,7 +1,7 @@
 import { usePlaylist } from "../../contexts/Playlistcontext";
 import "./addnewplaylist.css";
 export function AddToPlaylist() {
-   const { playlistState, playlistDispatch } = usePlaylist();
+   const { playlistState } = usePlaylist();
 
    console.log(Object.keys(playlistState.playlist));
    return (

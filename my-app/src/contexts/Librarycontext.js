@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 export const VideosContext = createContext();
 
