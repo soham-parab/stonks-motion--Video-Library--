@@ -24,11 +24,12 @@ export function useVideos() {
 const reducerFunction = (acc, action) => {
    switch (action.type) {
       case "SET VIDEOS":
+         console.log(action.payload);
          return { ...acc, videos: action.payload };
       case "SET LIKED VIDEOS":
-         return { ...acc, likedVideos: [...acc.likedVideos, action.payload] };
+         return { ...acc, likedVideos: action.payload };
       case "SET WATCH LATER":
-         return { ...acc, watchLater: [...acc.watchLater, action.payload] };
+         return { ...acc, watchLater: action.payload };
       case "REMOVE FROM LIKED VIDEOS":
          return {
             ...acc,
@@ -42,6 +43,18 @@ const reducerFunction = (acc, action) => {
             watchLater: acc.watchLater.filter(
                (item) => item.id !== action.payload.id
             ),
+         };
+
+      case "UPDATE LIKED VIDEOS":
+         return {
+            ...acc,
+            likedVideos: [...acc.likedVideos, action.payload],
+         };
+
+      case "UPDATE WATCH LATER":
+         return {
+            ...acc,
+            watchLater: [...acc.watchLater, action.payload],
          };
       default:
    }

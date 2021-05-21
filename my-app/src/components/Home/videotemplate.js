@@ -5,6 +5,7 @@ import { useVideos } from "../../contexts/Librarycontext";
 import { data } from "../../librarydata/librarydata";
 import { usePlaylist } from "../../contexts/Playlistcontext";
 import { FaThumbsUp } from "react-icons/fa";
+import { postLikedVideos } from "../../utilities/utilities";
 
 export const VideoTemplate = () => {
    // const [modal, setModal] = useState({ display: "none" });
@@ -12,10 +13,10 @@ export const VideoTemplate = () => {
    const [newPlaylist, setNewPlaylist] = useState("");
    const [video, setVideo] = useState({});
    const { playlistState, playlistDispatch } = usePlaylist();
-   const { dispatch } = useVideos();
+   const { state, dispatch } = useVideos();
    const { id } = useParams();
    console.log(id);
-   const videoArr = data.filter((item) => item.video === id);
+   const videoArr = state.videos.filter((item) => item.video === id);
    const videoMain = videoArr[0];
    console.log(video.title);
    return (
@@ -33,9 +34,7 @@ export const VideoTemplate = () => {
          </div>{" "}
          <div className="data-div">
             <FaThumbsUp
-               onClick={() =>
-                  dispatch({ type: "SET LIKED VIDEOS", payload: videoMain })
-               }
+               onClick={() => postLikedVideos(videoMain, dispatch)}
                className="like-icon"
             />
             <button

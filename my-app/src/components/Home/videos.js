@@ -1,14 +1,19 @@
 import { data } from "../../librarydata/librarydata";
 import uuid from "react-uuid";
 import { Playvideo } from "../playvideo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./videos.css";
 import { FaThumbsUp, FaRegClock, FaBorderNone } from "react-icons/fa";
 import { usePlaylist } from "../../contexts/Playlistcontext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { useVideos } from "../../contexts/Librarycontext";
 import { AddToPlaylist } from "../addnewplaylist/addnewplaylist";
+import {
+   postLikedVideos,
+   postWatchLaterVideos,
+} from "../../utilities/utilities";
 
 export function Videos() {
    const { state, dispatch } = useVideos();
@@ -18,10 +23,22 @@ export function Videos() {
    const [newPlaylist, setNewPlaylist] = useState("");
    const [video, setVideo] = useState({});
 
+   useEffect(() => {
+      (async function () {
+         try {
+            const response = await axios.get("http://localhost:3100/videos");
+            console.log(response.data);
+            dispatch({ type: "SET VIDEOS", payload: response.data });
+         } catch (error) {
+            console.log(error);
+         }
+      })();
+   }, []);
+
    return (
       <div className="videos-main-div">
          <div className="parent-data">
-            {data.map((videoObj) => {
+            {state.videos.map((videoObj) => {
                return (
                   <div className="card-parent-div">
                      <Link
@@ -35,31 +52,23 @@ export function Videos() {
                                  src={videoObj.thumbnail}
                               />
                            </div>
-                           <h3 className="video-title"> {videoObj.title}</h3>
+                           <h2 className="video-title"> {videoObj.title}</h2>
 
-                           <small>{videoObj.subcategory.type}</small>
+                           <small>{videoObj.subcategory.typer}</small>
+                           {/* <br />
+                           <small>{videoObj.subcategory.name}</small> */}
                         </div>
                      </Link>
 
                      <button
                         className="like-button"
-                        onClick={() =>
-                           dispatch({
-                              type: "SET LIKED VIDEOS",
-                              payload: videoObj,
-                           })
-                        }
+                        onClick={() => postLikedVideos(videoObj, dispatch)}
                      >
                         <FaThumbsUp className="like-icon" />
                      </button>
                      <button
                         className="like-button"
-                        onClick={() =>
-                           dispatch({
-                              type: "SET WATCH LATER",
-                              payload: videoObj,
-                           })
-                        }
+                        onClick={() => postWatchLaterVideos(videoObj, dispatch)}
                      >
                         <FaRegClock className="like-icon" />
                      </button>

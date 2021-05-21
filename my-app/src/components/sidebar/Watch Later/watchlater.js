@@ -1,5 +1,7 @@
 import { React } from "react";
 import { useVideos } from "../../../contexts/Librarycontext";
+import { useEffect } from "react";
+import axios from "axios";
 
 import "./watchlater.css";
 import { FaThumbsUp } from "react-icons/fa";
@@ -7,6 +9,20 @@ import { Link } from "react-router-dom";
 export function WatchLater() {
    const { state, dispatch } = useVideos();
 
+   useEffect(() => {
+      (async function () {
+         try {
+            const response = await axios.get(
+               "http://localhost:3100/watchlater"
+            );
+            console.log(response.data);
+            dispatch({ type: "SET WATCH LATER", payload: response.data });
+         } catch (error) {
+            console.log(error);
+         }
+      })();
+   }, []);
+   console.log(state.watchLater);
    return (
       <div className="videos-main-div">
          <div className="parent-data">
@@ -22,10 +38,11 @@ export function WatchLater() {
                                  src={vid.thumbnail}
                               />
                            </div>
-                           <h3 className="video-title"> {vid.title}</h3>
+                           {vid.subcategory.typer}
+                           <br />
 
-                           <p>{vid.subcategory.type}</p>
-                        </div>{" "}
+                           <h3 className="video-title"> {vid.title}</h3>
+                        </div>
                      </Link>
                      <button
                         className="like-button"
