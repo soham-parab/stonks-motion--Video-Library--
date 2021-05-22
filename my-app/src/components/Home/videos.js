@@ -12,6 +12,7 @@ import { useVideos } from "../../contexts/Librarycontext";
 import { AddToPlaylist } from "../addnewplaylist/addnewplaylist";
 import {
    postLikedVideos,
+   postNewPlaylist,
    postWatchLaterVideos,
 } from "../../utilities/utilities";
 
@@ -26,7 +27,9 @@ export function Videos() {
    useEffect(() => {
       (async function () {
          try {
-            const response = await axios.get("http://localhost:3100/videos");
+            const response = await axios.get(
+               "https://video-library-restapi.sohamparab13.repl.co/videos"
+            );
             console.log(response.data);
             dispatch({ type: "SET VIDEOS", payload: response.data });
          } catch (error) {
@@ -111,11 +114,16 @@ export function Videos() {
                            <div class="modal-footer">
                               <button
                                  className="save-changes"
-                                 onClick={() =>
-                                    playlistDispatch({
-                                       type: "CREATE PLAYLIST",
-                                       payload: newPlaylist,
-                                    })
+                                 onClick={
+                                    () =>
+                                       postNewPlaylist(
+                                          newPlaylist,
+                                          playlistDispatch
+                                       )
+                                    // playlistDispatch({
+                                    //    type: "CREATE PLAYLIST",
+                                    //    payload: newPlaylist,
+                                    // })
                                  }
                                  type="button"
                                  class="btn btn-primary"

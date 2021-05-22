@@ -13,7 +13,7 @@ export function WatchLater() {
       (async function () {
          try {
             const response = await axios.get(
-               "http://localhost:3100/watchlater"
+               "https://video-library-restapi.sohamparab13.repl.co/watchlater"
             );
             console.log(response.data);
             dispatch({ type: "SET WATCH LATER", payload: response.data });
@@ -22,6 +22,7 @@ export function WatchLater() {
          }
       })();
    }, []);
+
    console.log(state.watchLater);
    return (
       <div className="videos-main-div">
@@ -36,6 +37,7 @@ export function WatchLater() {
                               <img
                                  className="thumbnail-image"
                                  src={vid.thumbnail}
+                                 alt="nothing"
                               />
                            </div>
                            {vid.subcategory.typer}

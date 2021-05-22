@@ -9,7 +9,6 @@ export function VideosProvider({ children }) {
       watchLater: [],
       videos: [],
    });
-
    return (
       <VideosContext.Provider value={{ state, dispatch }}>
          {children}
@@ -44,18 +43,17 @@ const reducerFunction = (acc, action) => {
                (item) => item.id !== action.payload.id
             ),
          };
-
       case "UPDATE LIKED VIDEOS":
          return {
             ...acc,
             likedVideos: [...acc.likedVideos, action.payload],
          };
-
       case "UPDATE WATCH LATER":
          return {
             ...acc,
             watchLater: [...acc.watchLater, action.payload],
          };
+
       default:
    }
 };

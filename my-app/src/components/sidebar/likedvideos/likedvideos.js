@@ -12,7 +12,7 @@ export function LikedVideos() {
       (async function () {
          try {
             const response = await axios.get(
-               "http://localhost:3100/likedvideos"
+               "https://video-library-restapi.sohamparab13.repl.co/likedvideos"
             );
             console.log(response.data);
             dispatch({ type: "SET LIKED VIDEOS", payload: response.data });

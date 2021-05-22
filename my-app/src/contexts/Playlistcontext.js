@@ -6,7 +6,13 @@ export const PlaylistContext = createContext();
 
 export function PlaylistProvider({ children }) {
    const [playlistState, playlistDispatch] = useReducer(playlistReducer, {
-      playlist: [{ id: uuid(), name: "Playlist1", videos: [] }],
+      playlist: [
+         {
+            // id: uuid(),
+            name: "P",
+            videos: [],
+         },
+      ],
    });
 
    return (
@@ -22,24 +28,21 @@ export function usePlaylist() {
 
 const playlistReducer = (acc, action) => {
    switch (action.type) {
+      case "LOAD PLAYLIST":
+         console.log(acc.playlist);
+         console.log(action.payload);
+         return { ...acc, playlist: action.payload };
+
       case "CREATE PLAYLIST":
          console.log(action.payload);
          console.log(acc.playlist);
-
          //  return {
          //     ...acc,
          //     playlist: [...acc.playlist, acc.playlist.concat(action.payload)],
          //  };
          return {
             ...acc,
-            playlist: [
-               ...acc.playlist,
-               {
-                  id: uuid(),
-                  name: action.payload,
-                  videos: [],
-               },
-            ],
+            playlist: {[...acc.playlist, action.payload]},
          };
 
       case "ADD TO PLAYLIST":
