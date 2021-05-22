@@ -26,18 +26,18 @@ export function Playlist() {
    return (
       <div className="playlist-div">
          <h2 className="my-playlist">My Playlists.</h2>
-         {playlistState.playlist.map((playlist) => {
+         {playlistState.playlist.map((item) => {
             return (
                <div className="alert alert-primary">
-                  <Link className="link" to={`/playlistlisting/${playlist.id}`}>
-                     <h2 className="playlist-btn">{playlist.name}</h2>
+                  <Link className="link" to={`/playlistlisting/${item.id}`}>
+                     <h2 className="playlist-btn">{item.name}</h2>
                   </Link>
 
                   <div
                      onClick={() =>
                         playlistDispatch({
                            type: "REMOVE PLAYLIST",
-                           payload: playlist,
+                           payload: item,
                         })
                      }
                      className="delete-button"

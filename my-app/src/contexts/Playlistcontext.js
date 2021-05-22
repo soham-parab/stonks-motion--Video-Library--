@@ -29,8 +29,6 @@ export function usePlaylist() {
 const playlistReducer = (acc, action) => {
    switch (action.type) {
       case "LOAD PLAYLIST":
-         console.log(acc.playlist);
-         console.log(action.payload);
          return { ...acc, playlist: action.payload };
 
       case "CREATE PLAYLIST":
@@ -42,7 +40,7 @@ const playlistReducer = (acc, action) => {
          //  };
          return {
             ...acc,
-            playlist: {[...acc.playlist, action.payload]},
+            playlist: [...acc.playlist, action.payload],
          };
 
       case "ADD TO PLAYLIST":

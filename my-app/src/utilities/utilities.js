@@ -70,14 +70,11 @@ export const postNewPlaylist = (newPlaylist, playlistDispatch) => {
       try {
          const response = await axios.post(
             "https://video-library-restapi.sohamparab13.repl.co/playlists",
-            {
-               playlist: {
-                  playlist: newPlaylist,
-                  videos: [],
-               },
-            }
-         );
 
+            { name: newPlaylist, videos: [] }
+         );
+         console.log(newPlaylist);
+         console.log(response.data);
          playlistDispatch({ type: "CREATE PLAYLIST", payload: response.data });
       } catch (error) {
          console.log(error);

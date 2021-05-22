@@ -38,6 +38,7 @@ export function Videos() {
       })();
    }, []);
 
+   console.log(newPlaylist);
    return (
       <div className="videos-main-div">
          <div className="parent-data">
@@ -115,11 +116,13 @@ export function Videos() {
                               <button
                                  className="save-changes"
                                  onClick={
-                                    () =>
+                                    () => {
+                                       console.log(newPlaylist);
                                        postNewPlaylist(
                                           newPlaylist,
                                           playlistDispatch
-                                       )
+                                       );
+                                    }
                                     // playlistDispatch({
                                     //    type: "CREATE PLAYLIST",
                                     //    payload: newPlaylist,
