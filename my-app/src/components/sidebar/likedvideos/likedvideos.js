@@ -2,7 +2,7 @@ import { React } from "react";
 import { useVideos } from "../../../contexts/Librarycontext";
 import "./likedvideos.css";
 import { useEffect } from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { removeFromLikedVideos } from "../../../utilities/utilities";
@@ -54,7 +54,7 @@ export function LikedVideos() {
                               // })
                            }
                         >
-                           <FaThumbsUp className="like-icon" />
+                           <FaThumbsDown className="like-icon" />
                         </button>
                      </div>
                   );

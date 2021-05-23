@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 import "./watchlater.css";
-import { FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { removeFromWatchLater } from "../../../utilities/utilities";
 export function WatchLater() {
@@ -58,7 +58,7 @@ export function WatchLater() {
                               // })
                            }
                         >
-                           <FaThumbsUp className="like-icon" />
+                           <FaThumbsDown className="like-icon" />
                         </button>
                      </div>
                   );
