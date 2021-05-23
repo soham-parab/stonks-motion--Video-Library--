@@ -55,7 +55,7 @@ export function Videos() {
                                  src={videoObj.thumbnail}
                               />
                            </div>
-                           <h2 className="video-title"> {videoObj.title}</h2>
+                           <h3 className="video-title"> {videoObj.title}</h3>
 
                            <small>{videoObj.subcategory.typer}</small>
                         </div>

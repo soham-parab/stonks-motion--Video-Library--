@@ -155,3 +155,8 @@ input {
    border-radius: 4px;
    cursor: pointer;
 }
+
+.video-title {
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
