@@ -33,6 +33,20 @@ export const postLikedVideos = (video, dispatch) => {
    })();
 };
 
+export function removeFromLikedVideos(video, dispatch) {
+   (async function () {
+      try {
+         const response = await axios.delete(
+            `https://video-library-restapi.sohamparab13.repl.co/likedvideos/${video._id}`
+         );
+
+         dispatch({ type: "SET_LIKED_VIDEOS", payload: response.data });
+      } catch (error) {
+         console.log(error);
+      }
+   })();
+}
+
 export const postWatchLaterVideos = (video, dispatch) => {
    (async function () {
       try {
@@ -64,6 +78,20 @@ export const postWatchLaterVideos = (video, dispatch) => {
       }
    })();
 };
+
+export function removeFromWatchLater(video, dispatch) {
+   (async function () {
+      try {
+         const response = await axios.delete(
+            `https://video-library-restapi.sohamparab13.repl.co/watchlater/${video._id}`
+         );
+
+         dispatch({ type: "SET_WATCH_LATER", payload: response.data });
+      } catch (error) {
+         console.log(error);
+      }
+   })();
+}
 
 export const postNewPlaylist = (newPlaylist, playlistDispatch) => {
    (async function () {
@@ -102,3 +130,36 @@ export const addNewVideoToPlaylist = (playlist, video, playlistDispatch) => {
       }
    })();
 };
+
+export function removePlaylist(playlist, playlistDispatch) {
+   (async function () {
+      try {
+         const response = await axios.delete(
+            `https://video-library-restapi.sohamparab13.repl.co/playlists/${playlist._id}`
+         );
+
+         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+      } catch (error) {
+         console.log(error);
+      }
+   })();
+}
+
+export function deleteFromPlaylist(playlist, video, playlistDispatch) {
+   (async function () {
+      try {
+         const response = await axios.post(
+            "https://video-library-restapi.sohamparab13.repl.co/playlists/delete",
+            {
+               playlistId: playlist._id,
+               videoId: video._id,
+            }
+         );
+         // playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
+
+         console.log(response.data);
+      } catch (err) {
+         console.log(err);
+      }
+   })();
+}

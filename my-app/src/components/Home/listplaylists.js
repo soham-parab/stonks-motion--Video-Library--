@@ -3,6 +3,7 @@ import "./listplaylists.css";
 import { useVideos } from "../../contexts/Librarycontext";
 import { usePlaylist } from "../../contexts/Playlistcontext";
 import { Link } from "react-router-dom";
+import { deleteFromPlaylist } from "../../utilities/utilities";
 export const ListPlaylists = () => {
    const { state, dispatch } = useVideos();
    const { playlistState, playlistDispatch } = usePlaylist();
@@ -33,12 +34,16 @@ export const ListPlaylists = () => {
                         </Link>
                         <button
                            className="remove-button"
-                           onClick={() =>
-                              playlistDispatch({
-                                 type: "REMOVE FROM PLAYLIST",
-                                 payload: item.id,
-                                 videos: vid,
-                              })
+                           onClick={
+                              () => {
+                                 console.log(item._id, vid._id);
+                                 deleteFromPlaylist(item, vid);
+                              }
+                              // playlistDispatch({
+                              //    type: "REMOVE FROM PLAYLIST",
+                              //    payload: item.id,
+                              //    videos: vid,
+                              // })
                            }
                         >
                            Remove from Playlist.
