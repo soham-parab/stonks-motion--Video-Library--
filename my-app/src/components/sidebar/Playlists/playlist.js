@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Action } from "history";
+import { removePlaylist } from "../../../utilities/utilities";
 
 export function Playlist() {
    const { playlistState, playlistDispatch } = usePlaylist();
@@ -26,27 +27,29 @@ export function Playlist() {
    return (
       <div className="playlist-div">
          <h2 className="my-playlist">My Playlists.</h2>
-         {playlistState.playlist.map((item) => {
-            return (
-               <div className="alert alert-primary">
-                  <Link className="link" to={`/playlistlisting/${item._id}`}>
-                     <h2 className="playlist-btn">{item.name}</h2>
-                  </Link>
+         {playlistState.playlist.length &&
+            playlistState.playlist.map((item) => {
+               return (
+                  <div className="alert alert-primary">
+                     <Link className="link" to={`/playlistlisting/${item._id}`}>
+                        <h2 className="playlist-btn">{item.name}</h2>
+                     </Link>
 
-                  <div
-                     onClick={() =>
-                        playlistDispatch({
-                           type: "REMOVE PLAYLIST",
-                           payload: item,
-                        })
-                     }
-                     className="delete-button"
-                  >
-                     X
+                     <div
+                        onClick={
+                           () => removePlaylist(item, playlistDispatch)
+                           // playlistDispatch({
+                           //    type: "REMOVE PLAYLIST",
+                           //    payload: item,
+                           // })
+                        }
+                        className="delete-button"
+                     >
+                        X
+                     </div>
                   </div>
-               </div>
-            );
-         })}
+               );
+            })}
       </div>
    );
 }

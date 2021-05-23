@@ -40,7 +40,7 @@ export function removeFromLikedVideos(video, dispatch) {
             `https://video-library-restapi.sohamparab13.repl.co/likedvideos/${video._id}`
          );
 
-         dispatch({ type: "SET_LIKED_VIDEOS", payload: response.data });
+         dispatch({ type: "SET LIKED VIDEOS", payload: response.data });
       } catch (error) {
          console.log(error);
       }
@@ -86,7 +86,7 @@ export function removeFromWatchLater(video, dispatch) {
             `https://video-library-restapi.sohamparab13.repl.co/watchlater/${video._id}`
          );
 
-         dispatch({ type: "SET_WATCH_LATER", payload: response.data });
+         dispatch({ type: "SET WATCH LATER", payload: response.data });
       } catch (error) {
          console.log(error);
       }
@@ -138,7 +138,7 @@ export function removePlaylist(playlist, playlistDispatch) {
             `https://video-library-restapi.sohamparab13.repl.co/playlists/${playlist._id}`
          );
 
-         playlistDispatch({ type: "SET_PLAYLIST", payload: response.data });
+         playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
       } catch (error) {
          console.log(error);
       }
