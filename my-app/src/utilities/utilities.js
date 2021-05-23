@@ -81,3 +81,24 @@ export const postNewPlaylist = (newPlaylist, playlistDispatch) => {
       }
    })();
 };
+
+export const addNewVideoToPlaylist = (playlist, video, playlistDispatch) => {
+   (async function () {
+      try {
+         const response = await axios.post(
+            `https://video-library-restapi.sohamparab13.repl.co/playlists/update/${playlist._id}`,
+
+            {
+               video: video,
+            }
+         );
+
+         // playlistDispatch({
+         //    type: "ADD TO PLAYLIST",
+         //    payload: { video, id: videos.id },
+         // });
+      } catch (error) {
+         console.log(error);
+      }
+   })();
+};

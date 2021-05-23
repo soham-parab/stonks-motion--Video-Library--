@@ -11,6 +11,7 @@ import axios from "axios";
 import { useVideos } from "../../contexts/Librarycontext";
 import { AddToPlaylist } from "../addnewplaylist/addnewplaylist";
 import {
+   addNewVideoToPlaylist,
    postLikedVideos,
    postNewPlaylist,
    postWatchLaterVideos,
@@ -23,6 +24,7 @@ export function Videos() {
    const [bigModal, setBigModal] = useState({ display: "none" });
    const [newPlaylist, setNewPlaylist] = useState("");
    const [video, setVideo] = useState({});
+   const [videoToAdd, setVideoToAdd] = useState({});
 
    useEffect(() => {
       (async function () {
@@ -30,15 +32,12 @@ export function Videos() {
             const response = await axios.get(
                "https://video-library-restapi.sohamparab13.repl.co/videos"
             );
-            console.log(response.data);
+
             dispatch({ type: "SET VIDEOS", payload: response.data });
-         } catch (error) {
-            console.log(error);
-         }
+         } catch (error) {}
       })();
    }, []);
 
-   console.log(newPlaylist);
    return (
       <div className="videos-main-div">
          <div className="parent-data">
@@ -59,8 +58,6 @@ export function Videos() {
                            <h2 className="video-title"> {videoObj.title}</h2>
 
                            <small>{videoObj.subcategory.typer}</small>
-                           {/* <br />
-                           <small>{videoObj.subcategory.name}</small> */}
                         </div>
                      </Link>
 
@@ -82,6 +79,7 @@ export function Videos() {
                         onClick={() => {
                            setBigModal({ display: "flex" });
                            setVideo(videoObj);
+                           setVideoToAdd(videoObj);
                         }}
                      >
                         Add to playlist
@@ -115,19 +113,12 @@ export function Videos() {
                            <div class="modal-footer">
                               <button
                                  className="save-changes"
-                                 onClick={
-                                    () => {
-                                       console.log(newPlaylist);
-                                       postNewPlaylist(
-                                          newPlaylist,
-                                          playlistDispatch
-                                       );
-                                    }
-                                    // playlistDispatch({
-                                    //    type: "CREATE PLAYLIST",
-                                    //    payload: newPlaylist,
-                                    // })
-                                 }
+                                 onClick={() => {
+                                    postNewPlaylist(
+                                       newPlaylist,
+                                       playlistDispatch
+                                    );
+                                 }}
                                  type="button"
                                  class="btn btn-primary"
                               >
@@ -144,11 +135,17 @@ export function Videos() {
                               <h2>{playlist.name}</h2>
                               <button
                                  onClick={() =>
-                                    playlistDispatch({
-                                       type: "ADD TO PLAYLIST",
-                                       payload: { video, id: playlist.id },
-                                    })
+                                    addNewVideoToPlaylist(
+                                       playlist,
+                                       videoToAdd,
+                                       playlistDispatch
+                                    )
                                  }
+                                 // playlistDispatch({
+                                 //    type: "ADD TO PLAYLIST",
+                                 //    payload: { video, id: playlist.id },
+                                 // })
+
                                  className="add-button"
                               >
                                  Add

@@ -7,19 +7,14 @@ export const ListPlaylists = () => {
    const { state, dispatch } = useVideos();
    const { playlistState, playlistDispatch } = usePlaylist();
    const { id } = useParams();
-   console.log(id);
-   console.log(playlistState.playlist);
 
    return (
       <div className="parent-dataa">
          {playlistState.playlist
             .filter((item) => {
-               return item.id === id;
+               return item._id === id;
             })
             .map((item) => {
-               console.log(item, "playlist");
-               console.log(item.videos.title, "video title");
-
                return item.videos.map((vid) => {
                   return (
                      <div className="map-link">

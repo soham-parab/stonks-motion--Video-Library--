@@ -14,7 +14,7 @@ export function Playlist() {
             const response = await axios.get(
                "https://video-library-restapi.sohamparab13.repl.co/playlists"
             );
-            console.log(response.data);
+
             playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
          } catch (error) {
             console.log(error);
@@ -29,7 +29,7 @@ export function Playlist() {
          {playlistState.playlist.map((item) => {
             return (
                <div className="alert alert-primary">
-                  <Link className="link" to={`/playlistlisting/${item.id}`}>
+                  <Link className="link" to={`/playlistlisting/${item._id}`}>
                      <h2 className="playlist-btn">{item.name}</h2>
                   </Link>
 
