@@ -30,7 +30,7 @@ export function Videos() {
       (async function () {
          try {
             const response = await axios.get(
-               "https://video-library-restapi.sohamparab13.repl.co/videos"
+               "https://stonksmotion-rest-api.herokuapp.com/videos"
             );
 
             dispatch({ type: "SET VIDEOS", payload: response.data });

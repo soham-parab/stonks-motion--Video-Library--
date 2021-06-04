@@ -5,7 +5,7 @@ export const postLikedVideos = (video, dispatch) => {
    (async function () {
       try {
          const response = await axios.post(
-            "https://video-library-restapi.sohamparab13.repl.co/likedvideos",
+            "https://stonksmotion-rest-api.herokuapp.com/likedvideos",
             {
                title: video.title,
                description: video.description,
@@ -37,7 +37,7 @@ export function removeFromLikedVideos(video, dispatch) {
    (async function () {
       try {
          const response = await axios.delete(
-            `https://video-library-restapi.sohamparab13.repl.co/likedvideos/${video._id}`
+            `https://stonksmotion-rest-api.herokuapp.com/likedvideos/${video._id}`
          );
 
          dispatch({ type: "SET LIKED VIDEOS", payload: response.data });
@@ -51,7 +51,7 @@ export const postWatchLaterVideos = (video, dispatch) => {
    (async function () {
       try {
          const response = await axios.post(
-            "https://video-library-restapi.sohamparab13.repl.co/watchlater",
+            "https://stonksmotion-rest-api.herokuapp.com/watchlater",
             {
                title: video.title,
                description: video.description,
@@ -83,7 +83,7 @@ export function removeFromWatchLater(video, dispatch) {
    (async function () {
       try {
          const response = await axios.delete(
-            `https://video-library-restapi.sohamparab13.repl.co/watchlater/${video._id}`
+            `https://stonksmotion-rest-api.herokuapp.com/watchlater/${video._id}`
          );
 
          dispatch({ type: "SET WATCH LATER", payload: response.data });
@@ -97,7 +97,7 @@ export const postNewPlaylist = (newPlaylist, playlistDispatch) => {
    (async function () {
       try {
          const response = await axios.post(
-            "https://video-library-restapi.sohamparab13.repl.co/playlists",
+            "https://stonksmotion-rest-api.herokuapp.com/playlists",
 
             { name: newPlaylist, videos: [] }
          );
@@ -114,7 +114,7 @@ export const addNewVideoToPlaylist = (playlist, video, playlistDispatch) => {
    (async function () {
       try {
          const response = await axios.post(
-            `https://video-library-restapi.sohamparab13.repl.co/playlists/update/${playlist._id}`,
+            `https://stonksmotion-rest-api.herokuapp.com/playlists/update/${playlist._id}`,
 
             {
                video: video,
@@ -135,7 +135,7 @@ export function removePlaylist(playlist, playlistDispatch) {
    (async function () {
       try {
          const response = await axios.delete(
-            `https://video-library-restapi.sohamparab13.repl.co/playlists/${playlist._id}`
+            `https://stonksmotion-rest-api.herokuapp.com/playlists/${playlist._id}`
          );
 
          playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
@@ -149,7 +149,7 @@ export function deleteFromPlaylist(playlist, video, playlistDispatch) {
    (async function () {
       try {
          const response = await axios.post(
-            "https://video-library-restapi.sohamparab13.repl.co/playlists/delete",
+            "https://stonksmotion-rest-api.herokuapp.com/playlists/delete",
             {
                playlistId: playlist._id,
                videoId: video._id,
