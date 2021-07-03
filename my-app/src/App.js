@@ -10,23 +10,26 @@ import { WatchLater } from "./components/sidebar/Watch Later/watchlater";
 import { Nav } from "./components/Nav/nav";
 import { Sidebar } from "./components/sidebar/sidebar";
 import { ListPlaylists } from "../src/components/Home/listplaylists";
+import { Register } from "../src/Pages/Register/Register";
+import { Login } from "./Pages/Login/Login";
+
 function App() {
-   return (
-      <div className="App">
-         <Router>
-            <Nav />
-            <Sidebar />
-            <Routes>
-               <Route path="/" element={<Videos />} />
-               <Route path="/playlists" element={<Playlist />} />
-               <Route path="/videotemplate/:id" element={<VideoTemplate />} />
-               <Route path="/likedvideos" element={<LikedVideos />} />
-               <Route path="/watchlater" element={<WatchLater />} />
-               <Route path="/playlistlisting/:id" element={<ListPlaylists />} />
-            </Routes>
-         </Router>
-      </div>
-   );
+  return (
+    <div className="App">
+      <Nav />
+      <Sidebar />
+      <Routes>
+        <Route path="/" element={<Videos />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/playlists" element={<Playlist />} />
+        <Route path="/videotemplate/:id" element={<VideoTemplate />} />
+        <Route path="/likedvideos" element={<LikedVideos />} />
+        <Route path="/watchlater" element={<WatchLater />} />
+        <Route path="/playlistlisting/:id" element={<ListPlaylists />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
