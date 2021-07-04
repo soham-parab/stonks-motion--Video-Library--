@@ -43,9 +43,36 @@ export function Login() {
       console.log(err);
     }
   }
+
+  function emailHandler(event) {
+    setEmail(event.target.value);
+    console.log(email);
+  }
+
+  function passwordHandler(event) {
+    setPassword(event.target.value);
+    console.log(password);
+  }
   return (
     <div>
-      <h1>sadsdwasd</h1>
+      <input
+        className="input"
+        placeholder="Enter your email"
+        onChange={emailHandler}
+      />
+      <input placeholder="Enter your password" onChange={passwordHandler} />
+
+      <button onClick={loginHandler}>Login</button>
+
+      {error && (
+        <p className="errorMessage" style={{ color: "red" }}>
+          {error}
+        </p>
+      )}
+
+      <p>
+        Don't have an account, <Link to="/register">Create Account</Link>
+      </p>
     </div>
   );
 }
