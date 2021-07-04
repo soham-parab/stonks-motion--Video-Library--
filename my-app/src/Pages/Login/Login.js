@@ -21,7 +21,7 @@ export function Login() {
   async function loginHandler() {
     try {
       const response = await axios.post(
-        "https://vid-lib-api-forked.sayuk.repl.co/register/login",
+        "https://stonksmotion-rest-api.herokuapp.com/login",
         {
           email: email,
           password: password,
@@ -43,5 +43,9 @@ export function Login() {
       console.log(err);
     }
   }
-  return <div>yooooooo</div>;
+  return (
+    <div>
+      <h1>sadsdwasd</h1>
+    </div>
+  );
 }
