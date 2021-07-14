@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Sidebar />
+
       <Routes>
         <Route path="/" element={<Videos />} />
         <Route path="/login" element={<Login />} />

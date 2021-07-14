@@ -17,6 +17,7 @@ import {
   postNewPlaylist,
   postWatchLaterVideos,
 } from "../../utilities/utilities";
+import { Sidebar } from "../sidebar/sidebar";
 
 export function Videos() {
   const { auth } = useAuth();
@@ -42,6 +43,7 @@ export function Videos() {
 
   return (
     <div className="videos-main-div">
+      <Sidebar />
       <div className="parent-data">
         {state.videos.map((videoObj) => {
           return (

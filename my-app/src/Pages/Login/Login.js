@@ -54,25 +54,36 @@ export function Login() {
     console.log(password);
   }
   return (
-    <div>
-      <input
-        className="input"
-        placeholder="Enter your email"
-        onChange={emailHandler}
-      />
-      <input placeholder="Enter your password" onChange={passwordHandler} />
+    <div className="main-div">
+      <div className="main-div-two">
+        <input
+          className="input-login"
+          placeholder="Enter your email"
+          onChange={emailHandler}
+        />
+        <input
+          className="input-login"
+          placeholder="Enter your password"
+          onChange={passwordHandler}
+        />
 
-      <button onClick={loginHandler}>Login</button>
+        <button className="login-button" onClick={loginHandler}>
+          Login
+        </button>
 
-      {error && (
-        <p className="errorMessage" style={{ color: "red" }}>
-          {error}
+        {error && (
+          <p className="errorMessage" style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
+
+        <p>
+          Don't have an account,{" "}
+          <Link className="login-link" to="/register">
+            Create Account
+          </Link>
         </p>
-      )}
-
-      <p>
-        Don't have an account, <Link to="/register">Create Account</Link>
-      </p>
+      </div>
     </div>
   );
 }

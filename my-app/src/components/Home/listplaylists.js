@@ -5,6 +5,7 @@ import { usePlaylist } from "../../contexts/Playlistcontext";
 import { Link } from "react-router-dom";
 import { deleteFromPlaylist } from "../../utilities/utilities";
 import { useAuth } from "../../contexts/authContext";
+import { Sidebar } from "../sidebar/sidebar";
 export const ListPlaylists = () => {
   const { state, dispatch } = useVideos();
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -13,6 +14,7 @@ export const ListPlaylists = () => {
 
   return (
     <div className="parent-dataa">
+      <Sidebar />
       {playlistState.playlist
         .filter((item) => {
           return item._id === id;

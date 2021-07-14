@@ -8,6 +8,7 @@ import { FaThumbsDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../contexts/authContext";
 import { removeFromWatchLater } from "../../../utilities/utilities";
+import { Sidebar } from "../sidebar";
 export function WatchLater() {
   const { auth } = useAuth();
   const { state, dispatch } = useVideos();
@@ -34,6 +35,7 @@ export function WatchLater() {
   console.log(state.watchLater);
   return (
     <div className="videos-main-div">
+      <Sidebar />
       <div className="parent-data">
         {state.watchLater.length &&
           state.watchLater.map((vid) => {

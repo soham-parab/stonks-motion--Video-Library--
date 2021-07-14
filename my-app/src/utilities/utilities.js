@@ -214,12 +214,13 @@ export function removePlaylist(playlist, playlistDispatch, auth) {
   }
 }
 
-export function deleteFromPlaylist(playlist, video, playlistDispatch, auth) {
+export function deleteFromPlaylist(playlist, video, auth) {
   if (auth) {
     (async function () {
       try {
+        console.log(playlist, video);
         const response = await axios.post(
-          "https://stonksmotion-rest-api.herokuapp.com/playlists/delete",
+          "  https://stonksmotion-rest-api.herokuapp.com/delete",
           {
             playlistId: playlist._id,
             videoId: video._id,

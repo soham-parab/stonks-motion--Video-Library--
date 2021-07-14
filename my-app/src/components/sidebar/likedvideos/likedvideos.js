@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { FaThumbsDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Sidebar } from "../sidebar";
 import { useAuth } from "../../../contexts/authContext";
 import { removeFromLikedVideos } from "../../../utilities/utilities";
 export function LikedVideos() {
@@ -32,6 +33,7 @@ export function LikedVideos() {
 
   return (
     <div className="videos-main-div">
+      <Sidebar />
       <div className="parent-data">
         {state.likedVideos.length &&
           state.likedVideos.map((vid) => {

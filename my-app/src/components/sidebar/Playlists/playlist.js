@@ -6,6 +6,7 @@ import axios from "axios";
 import { Action } from "history";
 import { removePlaylist } from "../../../utilities/utilities";
 import { useAuth } from "../../../contexts/authContext";
+import { Sidebar } from "../sidebar";
 export function Playlist() {
   const { auth } = useAuth();
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -32,6 +33,7 @@ export function Playlist() {
   // console.log(Object.keys(playlistState.playlist));
   return (
     <div className="playlist-div">
+      <Sidebar />
       <h2 className="my-playlist">My Playlists.</h2>
       {playlistState.playlist.length &&
         playlistState.playlist.map((item) => {
