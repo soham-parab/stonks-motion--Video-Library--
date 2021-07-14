@@ -65,6 +65,7 @@ export function Register() {
           onChange={emailHandler}
         />
         <input
+          type="password"
           className="input-register"
           placeholder="Enter your password"
           onChange={passwordHandler}

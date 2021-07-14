@@ -62,6 +62,7 @@ export function Login() {
           onChange={emailHandler}
         />
         <input
+          type="password"
           className="input-login"
           placeholder="Enter your password"
           onChange={passwordHandler}

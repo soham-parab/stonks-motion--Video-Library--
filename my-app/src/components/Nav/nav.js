@@ -1,9 +1,10 @@
 import "./nav.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
 
 export function Nav() {
+  const navigate = useNavigate();
   const { auth, setAuth } = useAuth();
   function logoutHandler() {
     setAuth(() => {
