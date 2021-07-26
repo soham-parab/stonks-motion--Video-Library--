@@ -18,8 +18,10 @@ import {
   postWatchLaterVideos,
 } from "../../utilities/utilities";
 import { Sidebar } from "../sidebar/sidebar";
+import { useToast } from "../../contexts/toastContext";
 
 export function Videos() {
+  const { toast } = useToast();
   const { auth } = useAuth();
   const { state, dispatch } = useVideos();
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -64,13 +66,15 @@ export function Videos() {
 
               <button
                 className="like-button"
-                onClick={() => postLikedVideos(videoObj, dispatch, auth)}
+                onClick={() => postLikedVideos(videoObj, dispatch, auth, toast)}
               >
                 <FaThumbsUp className="like-icon" />
               </button>
               <button
                 className="like-button"
-                onClick={() => postWatchLaterVideos(videoObj, dispatch, auth)}
+                onClick={() =>
+                  postWatchLaterVideos(videoObj, dispatch, auth, toast)
+                }
               >
                 <FaRegClock className="like-icon" />
               </button>
@@ -78,9 +82,13 @@ export function Videos() {
               <button
                 className="add-to-playlist"
                 onClick={() => {
-                  setBigModal({ display: "flex" });
-                  setVideo(videoObj);
-                  setVideoToAdd(videoObj);
+                  if (auth) {
+                    setBigModal({ display: "flex" });
+                    setVideo(videoObj);
+                    setVideoToAdd(videoObj);
+                  } else {
+                    toast("Please log in", { type: "info" });
+                  }
                 }}
               >
                 Add to playlist

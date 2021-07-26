@@ -18,8 +18,10 @@ import { ListPlaylists } from "../src/components/Home/listplaylists";
 import { Register } from "../src/Pages/Register/Register";
 import { Login } from "./Pages/Login/Login";
 import { useAuth } from "./contexts/authContext";
+import { useToast } from "../src/contexts/toastContext";
 
 function App() {
+  const { ToastContainer } = useToast();
   function PrivateRoute({ path, ...props }) {
     const { auth } = useAuth();
     return auth ? (
@@ -32,6 +34,18 @@ function App() {
   return (
     <div className="App">
       <Nav />
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <Routes>
         <Route path="/" element={<Videos />} />

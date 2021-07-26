@@ -1,5 +1,5 @@
 import "./nav.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../contexts/authContext";
 
@@ -25,9 +25,13 @@ export function Nav() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="link-nav" to="/library">
-              Library
-            </Link>
+            {auth ? (
+              <Link className="link-nav" to="/library">
+                My Library
+              </Link>
+            ) : (
+              ""
+            )}
             {!auth ? (
               <Link className="link-nav" to="/login">
                 Login

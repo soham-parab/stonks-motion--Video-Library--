@@ -3,7 +3,7 @@ import axios from "axios";
 
 const baseURL = "https://stonksmotion-rest-api.herokuapp.com";
 
-export const postLikedVideos = (video, dispatch, auth) => {
+export const postLikedVideos = (video, dispatch, auth, toast) => {
   if (auth) {
     (async function () {
       console.log(video);
@@ -34,18 +34,23 @@ export const postLikedVideos = (video, dispatch, auth) => {
             },
           }
         );
-
+        toast("Added to liked videos!", {
+          type: "success",
+        });
         dispatch({ type: "UPDATE LIKED VIDEOS", payload: response.data });
       } catch (error) {
         console.log(error);
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 };
 
-export function removeFromLikedVideos(video, dispatch, auth) {
+export function removeFromLikedVideos(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -57,7 +62,9 @@ export function removeFromLikedVideos(video, dispatch, auth) {
             },
           }
         );
-
+        toast("Removed from liked videos!", {
+          type: "info",
+        });
         dispatch({ type: "SET LIKED VIDEOS", payload: response.data });
       } catch (error) {
         console.log(error);
@@ -67,7 +74,7 @@ export function removeFromLikedVideos(video, dispatch, auth) {
   console.log("please login");
 }
 
-export const postWatchLaterVideos = (video, dispatch, auth) => {
+export const postWatchLaterVideos = (video, dispatch, auth, toast) => {
   if (auth) {
     (async function () {
       try {
@@ -97,18 +104,23 @@ export const postWatchLaterVideos = (video, dispatch, auth) => {
             },
           }
         );
-
+        toast("Added to watch later!", {
+          type: "success",
+        });
         dispatch({ type: "UPDATE WATCH LATER", payload: response.data });
       } catch (error) {
         console.log(error);
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 };
 
-export function removeFromWatchLater(video, dispatch, auth) {
+export function removeFromWatchLater(video, dispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -120,7 +132,9 @@ export function removeFromWatchLater(video, dispatch, auth) {
             },
           }
         );
-
+        toast("Removed from watch later!", {
+          type: "info",
+        });
         dispatch({ type: "SET WATCH LATER", payload: response.data });
       } catch (error) {
         console.log(error);
@@ -131,7 +145,7 @@ export function removeFromWatchLater(video, dispatch, auth) {
   }
 }
 
-export const postNewPlaylist = (newPlaylist, playlistDispatch, auth) => {
+export const postNewPlaylist = (newPlaylist, playlistDispatch, auth, toast) => {
   if (auth) {
     (async function () {
       try {
@@ -144,6 +158,9 @@ export const postNewPlaylist = (newPlaylist, playlistDispatch, auth) => {
             },
           }
         );
+        toast("Created new playist!", {
+          type: "success",
+        });
         console.log(newPlaylist);
         console.log(response.data);
         playlistDispatch({ type: "CREATE PLAYLIST", payload: response.data });
@@ -152,6 +169,9 @@ export const postNewPlaylist = (newPlaylist, playlistDispatch, auth) => {
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 };
@@ -160,7 +180,8 @@ export const addNewVideoToPlaylist = (
   playlist,
   video,
   playlistDispatch,
-  auth
+  auth,
+  toast
 ) => {
   if (auth) {
     (async function () {
@@ -177,6 +198,9 @@ export const addNewVideoToPlaylist = (
             },
           }
         );
+        toast("Added to playlist!", {
+          type: "success",
+        });
 
         // playlistDispatch({
         //    type: "ADD TO PLAYLIST",
@@ -187,11 +211,14 @@ export const addNewVideoToPlaylist = (
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 };
 
-export function removePlaylist(playlist, playlistDispatch, auth) {
+export function removePlaylist(playlist, playlistDispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -203,18 +230,23 @@ export function removePlaylist(playlist, playlistDispatch, auth) {
             },
           }
         );
-
+        toast("Playlist removed!", {
+          type: "info",
+        });
         playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
       } catch (error) {
         console.log(error);
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 }
 
-export function deleteFromPlaylist(playlist, video, auth) {
+export function deleteFromPlaylist(playlist, video, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -232,13 +264,18 @@ export function deleteFromPlaylist(playlist, video, auth) {
           }
         );
         // playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
-
+        toast("Deleted from playlist!", {
+          type: "info",
+        });
         console.log(response.data);
       } catch (err) {
         console.log(err);
       }
     })();
   } else {
+    toast("Please log in!", {
+      type: "info",
+    });
     console.log("please login");
   }
 }

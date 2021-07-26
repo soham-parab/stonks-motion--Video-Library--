@@ -9,9 +9,11 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../contexts/authContext";
 import { removeFromWatchLater } from "../../../utilities/utilities";
 import { Sidebar } from "../sidebar";
+import { useToast } from "../../../contexts/toastContext";
 export function WatchLater() {
   const { auth } = useAuth();
   const { state, dispatch } = useVideos();
+  const { toast } = useToast();
 
   useEffect(() => {
     (async function () {
@@ -60,7 +62,7 @@ export function WatchLater() {
                 <button
                   className="like-button"
                   onClick={
-                    () => removeFromWatchLater(vid, dispatch, auth)
+                    () => removeFromWatchLater(vid, dispatch, auth, toast)
                     // dispatch({
                     //    type: "REMOVE FROM WATCHLATER VIDEOS",
                     //    payload: vid,
