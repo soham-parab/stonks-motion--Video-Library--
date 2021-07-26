@@ -19,17 +19,9 @@ import { Register } from "../src/Pages/Register/Register";
 import { Login } from "./Pages/Login/Login";
 import { useAuth } from "./contexts/authContext";
 import { useToast } from "../src/contexts/toastContext";
-
+import { PrivateRoute } from "../src/components/Routes/PrivateRoute";
 function App() {
   const { ToastContainer } = useToast();
-  function PrivateRoute({ path, ...props }) {
-    const { auth } = useAuth();
-    return auth ? (
-      <Route {...props} path={path} />
-    ) : (
-      <Navigate state={{ from: path }} replace to="/login" />
-    );
-  }
 
   return (
     <div className="App">

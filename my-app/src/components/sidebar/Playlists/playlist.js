@@ -15,14 +15,13 @@ export function Playlist() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://video-library-restapi.sohamparab13.repl.co/playlists",
+          "https://stonksmotion-rest-api.herokuapp.com/playlists",
           {
             headers: {
               "auth-token": auth.token,
             },
           }
         );
-
         playlistDispatch({ type: "LOAD PLAYLIST", payload: response.data });
       } catch (error) {
         console.log(error);

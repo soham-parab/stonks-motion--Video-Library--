@@ -70,3 +70,10 @@
   font-size: 1rem;
   margin-left: 0.3rem;
 }
+
+.name-header {
+  padding-right: 5rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}

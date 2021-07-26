@@ -8,13 +8,14 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import { useToast } from "../../contexts/toastContext";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { auth, setAuth } = useAuth();
-
+  const { toast } = useToast();
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -36,7 +37,7 @@ export function Login() {
           localStorage.setItem("auth", JSON.stringify(prev));
           return prev;
         });
-
+        toast("Logged in!", { type: "success" });
         navigate(state?.from ? state.from : "/");
       }
     } catch (err) {

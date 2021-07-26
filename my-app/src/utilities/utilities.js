@@ -50,7 +50,7 @@ export const postLikedVideos = (video, dispatch, auth, toast) => {
   }
 };
 
-export function removeFromLikedVideos(video, dispatch, auth, toast) {
+export function removeFromLikedVideos(video, dispatch, auth) {
   if (auth) {
     (async function () {
       try {
@@ -62,16 +62,14 @@ export function removeFromLikedVideos(video, dispatch, auth, toast) {
             },
           }
         );
-        toast("Removed from liked videos!", {
-          type: "info",
-        });
+
         dispatch({ type: "SET LIKED VIDEOS", payload: response.data });
       } catch (error) {
         console.log(error);
       }
     })();
+  } else {
   }
-  console.log("please login");
 }
 
 export const postWatchLaterVideos = (video, dispatch, auth, toast) => {

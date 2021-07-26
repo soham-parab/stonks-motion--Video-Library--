@@ -8,15 +8,17 @@ import axios from "axios";
 import { Sidebar } from "../sidebar";
 import { useAuth } from "../../../contexts/authContext";
 import { removeFromLikedVideos } from "../../../utilities/utilities";
+import { useToast } from "../../../contexts/toastContext";
 export function LikedVideos() {
   const { state, dispatch } = useVideos();
   const { auth } = useAuth();
+  const { toast } = useToast();
 
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://video-library-restapi.sohamparab13.repl.co/likedvideos",
+          "https://stonksmotion-rest-api.herokuapp.com/likedvideos",
           {
             headers: {
               "auth-token": auth.token,
@@ -26,7 +28,7 @@ export function LikedVideos() {
         console.log(response.data);
         dispatch({ type: "SET LIKED VIDEOS", payload: response.data });
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     })();
   }, []);
@@ -51,14 +53,7 @@ export function LikedVideos() {
                 </Link>
                 <button
                   className="like-button"
-                  onClick={
-                    () => removeFromLikedVideos(vid, dispatch, auth)
-
-                    // dispatch({
-                    //    type: "REMOVE FROM LIKED VIDEOS",
-                    //    payload: vid,
-                    // })
-                  }
+                  onClick={() => removeFromLikedVideos(vid, dispatch, auth)}
                 >
                   <FaThumbsDown className="like-icon" />
                 </button>
