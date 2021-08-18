@@ -1,0 +1,37 @@
+@import "https://tetherui.netlify.app/alert/alerts.css";
+
+.playlist-div {
+   margin-top: 10vh;
+   margin-left: 20vw;
+   width: 80vw;
+   height: 90vh;
+   color: var(--primary-color);
+   padding: 2rem;
+}
+
+.my-playlist {
+   color: var(--primary-color);
+   padding-left: 1rem;
+}
+
+.alert {
+   display: flex;
+   width: 40%;
+   padding: 1rem;
+   justify-content: space-between;
+}
+
+.delete-button {
+   padding: 0.5rem;
+   cursor: pointer;
+   background-color: rgb(255, 247, 247);
+   border-radius: 50%;
+   color: var(--primary-color);
+   overflow: hidden;
+   font-weight: bold;
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

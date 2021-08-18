@@ -1,0 +1,42 @@
+.playlist-videos-div {
+   margin-top: 10vh;
+   margin-left: 20vw;
+}
+
+.remove-button {
+   font-size: 1rem;
+}
+
+.video-cardbodyy {
+   color: var(--primary-color);
+   text-decoration: none;
+}
+.videoImgDivv {
+   height: 50%;
+   width: 20rem;
+}
+.card-parent-div {
+   height: 20rem;
+   overflow-y: hidden;
+
+   width: 20rem;
+   margin: 1rem;
+}
+
+.parent-dataa {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   margin-top: 10vh;
+   margin-left: 20vw;
+}
+.videos-main-divv {
+   margin-top: 10vh;
+   padding: 1rem;
+   width: 100%;
+   margin-left: 20vw;
+}
+
+.map-link {
+   margin: 0.5rem;
+}
